@@ -1,0 +1,10 @@
+<main>
+    <div class="p-3">
+        <h2 class="text-center text-light">Featured Games</h2>
+        <ol class="container ">
+        {{#each game as |game|}}
+        {{>inventory-cards}}
+        {{/each}}
+        </ol>    
+    </div>
+</main>
