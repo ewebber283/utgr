@@ -1,5 +1,5 @@
 const express = require('express');
-const routes = require('./controllers/api');
+const routes = require('./controllers');
 const sequelize = require('./config/connection.js');
 const path = require('path');
 
@@ -22,7 +22,7 @@ const sess = {
   saveUninitialized: true,
 };
 
-app.use(session(sess));
+// app.use(session(sess));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
