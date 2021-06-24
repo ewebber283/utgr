@@ -3,3 +3,4 @@ DROP DATABASE IF EXISTS utgr_db;
 
 -- CREATE DATABASE
 CREATE DATABASE utgr_db;
+USE utgr_db;

@@ -47,14 +47,7 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false
         },
-        post_url: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isURL: true
-            }
-        },
-        user_id: {
+        author_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'author',
