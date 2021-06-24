@@ -6,15 +6,15 @@ const postData = [
     author_id: 1
   },
   {
-    name: 'Assassins Creed Valhalla',
+    title: 'Assassins Creed Valhalla',
     author_id: 2
   },
   {
-    name: 'Forza Horizons 5',
+    title: 'Forza Horizons 5',
     author_id: 3
   },
   {
-    name: 'Fortnite',
+    title: 'Fortnite',
     author_id: 4
   }
 
