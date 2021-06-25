@@ -33,6 +33,9 @@ app.set('view engine', 'handlebars');
 
 app.use(routes);
 
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
+app.listen(PORT, () => {
+console.log('listening on port 3001')
+  sequelize.sync({
+    force:false
+  })
+})

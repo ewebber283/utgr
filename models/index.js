@@ -67,4 +67,7 @@ Post.hasMany(Comment, {
     foreignKey: 'post_id'
 });
 
+
+// add routes for user posts
+//post belongs to user
 module.exports = { User, Post, Vote, Comment, Author };
