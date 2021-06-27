@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
         include: [
           {
             model: Post,
-            attributes: ['id', 'title', 'post_text', 'created_at']
+            attributes: ['id', 'title', 'post_url', 'post_text', 'created_at']
           },
           {
             model: Comment,
@@ -88,9 +88,18 @@ router.post('/', (req, res) => {
   });
 });
 
+router.post('/logout', (req, res) => {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    }
+    else {
+      res.status(404).end();
+    }
+  });
 
-
-  router.put('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     User.update(req.body, {
         individualHooks: true,
       where: {
@@ -110,7 +119,7 @@ router.post('/', (req, res) => {
   });
 
 
-  router.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     User.destroy({
       where: {
         id: req.params.id
