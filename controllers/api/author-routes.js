@@ -17,11 +17,11 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        include: [
+        include:[
             {
             model: Post,
             attributes: ['id', 'author_name']
-            }
+            }]
     })
     .then(dbAuthorData => {
         if(!dbAuthorData) {
