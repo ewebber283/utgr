@@ -20,7 +20,7 @@ router.get('/:id', (req, res) => {
         include: [
             {
             model: Post,
-            attributes: ['id', 'author']
+            attributes: ['id', 'author_name']
             }
     })
     .then(dbAuthorData => {
@@ -34,3 +34,4 @@ router.get('/:id', (req, res) => {
         res.status(500).json(err);
     });
 });
+
