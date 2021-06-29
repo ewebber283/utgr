@@ -1,42 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UTGR</title>
-</head>
-<body>
-    <header>
-        <H1>
-            <a href="/">UTGR</a>
-        </H1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#genres">Genres</a>
-                </li>
-                <li>
-                    <a href="#top-games">Top Games</a>
-                </li>
-                <li>
-                    <a href="#reviews">Reviews</a>
-                </li>
-                <li>
-                    <a href="#login">Login</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-<main>
-    <div class="p-3">
-        <h2 class="text-center text-light">Featured Games</h2>
-        <ol class="container ">
-        {{#each game as |game|}}
-        {{>inventory-cards}}
-        {{/each}}
-        </ol>    
-    </div>
-</main>
-</body>
-</html>
+<ol class="post-list">
+  {{#each posts as |post|}}
+  <li>
+    {{> post-info post }}
+  </li>
+  {{/each}}
+</ol>
