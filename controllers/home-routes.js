@@ -5,15 +5,16 @@ const { Post, User, Comment } = require('../models');
 router.get('/', (req, res) => {
     Post.findAll({
       attributes: [
-        'title',
-        'author_id',
+        'id',
         'post_url',
-        'post_text'
+        'post_text',
+        'title',
+        'created_at'
       ],
       // include: [
       //   {
       //     model: Comment,
-      //     attributes: ['id', 'comment_text', 'games_id', 'user_id', 'created_at'],
+      //     attributes: ['id', 'comment_text', 'posts_id', 'user_id', 'created_at'],
       //     include: {
       //       model: User,
       //       attributes: ['username']
@@ -25,10 +26,10 @@ router.get('/', (req, res) => {
       //   }
       // ]
     })
-      .then(dbGamesData => {
-        const games = dbGamesData.map(games => games.get({ plain: true }));
+      .then(dbPostsData => {
+        const posts = dbPostsData.map(posts => posts.get({ plain: true }));
         res.render('homepage', {
-            games,
+            posts,
             loggedIn: req.session.loggedIn
           });
     })
@@ -46,20 +47,22 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/games/:id', (req, res) => {
+router.get('/posts/:id', (req, res) => {
     Post.findOne({
       where: {
         id: req.params.id
       },
       attributes: [
         'id',
-        'name',
-        'notes',
+        'post_url',
+        'post_text',
+        'title',
+        'created_at',
       ],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'games_id', 'user_id', 'created_at'],
+          attributes: ['id', 'comment_text', 'posts_id', 'user_id', 'created_at'],
           include: {
             model: User,
             attributes: ['username']
@@ -71,16 +74,16 @@ router.get('/games/:id', (req, res) => {
         }
       ]
     })
-      .then(dbGamesData => {
-        if (!dbGamesData) {
-          res.status(404).json({ message: 'No games found with this id' });
+      .then(dbPostsData => {
+        if (!dbPostsData) {
+          res.status(404).json({ message: 'No posts found with this id' });
           return;
         }
 
-        const Games = dbGamesData.get({ plain: true });
+        const Posts = dbPostsData.get({ plain: true });
 
-        res.render('single-games', {
-            games,
+        res.render('single-posts', {
+            posts,
             loggedIn: req.session.loggedIn
           });
       })
