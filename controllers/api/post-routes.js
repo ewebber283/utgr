@@ -4,12 +4,12 @@ const { Post, User } = require('../../models');
 router.get('/', (req, res) => {
     Post.findAll({
         attributes: ['id', 'post_url', 'post_text', 'title', 'created_at'],
-        include: [
+        /*include: [
             {
                 model: User,
                 attributes: ['username']
             }
-        ]
+        ]*/
       })
       .then(dbPostData => res.json(dbPostData))
       .catch(err => {
@@ -23,12 +23,12 @@ router.get('/:id', (req, res) => {
         id: req.params.id
       },
       attributes: ['id', 'post_url', 'post_text', 'title', 'created_at'],
-      include: [
+      /*include: [
         {
           model: User,
           attributes: ['username']
         }
-      ]
+      ] */
     })
       .then(dbPostData => {
         if (!dbPostData) {
