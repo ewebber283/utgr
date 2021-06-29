@@ -1,28 +1,29 @@
 const router = require('express').Router();
-const sequelize = require('../../config/connection');
-const { Games, User, Comment } = require('../../models');
+const sequelize = require('../config/connection');
+const { Post, User, Comment } = require('../models');
 
 router.get('/', (req, res) => {
-    Games.findAll({
+    Post.findAll({
       attributes: [
-        'id',
-        'name',
-        'notes',
+        'title',
+        'author_id',
+        'post_url',
+        'post_text'
       ],
-      include: [
-        {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'games_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
-          model: User,
-          attributes: ['username']
-        }
-      ]
+      // include: [
+      //   {
+      //     model: Comment,
+      //     attributes: ['id', 'comment_text', 'games_id', 'user_id', 'created_at'],
+      //     include: {
+      //       model: User,
+      //       attributes: ['username']
+      //     }
+      //   },
+      //   {
+      //     model: User,
+      //     attributes: ['username']
+      //   }
+      // ]
     })
       .then(dbGamesData => {
         const games = dbGamesData.map(games => games.get({ plain: true }));
@@ -46,7 +47,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/games/:id', (req, res) => {
-    Games.findOne({
+    Post.findOne({
       where: {
         id: req.params.id
       },
