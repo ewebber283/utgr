@@ -1,6 +1,10 @@
-{{> post-info post}}
-
 {{#if loggedIn}}
+
+<div>
+  <h2>{{title}}</h2>
+  <p> {{post_text}}</p>
+</div>
+
 <form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
