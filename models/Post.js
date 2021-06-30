@@ -52,13 +52,13 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-              isURL: true
+                isURL: true
             }
-          },
+        },
         post_text: {
             type: DataTypes.STRING,
             allowNull: false
-          },
+        },
         author_id: {
             type: DataTypes.INTEGER,
             references: {
