@@ -6,10 +6,10 @@ router.get('/', (req, res) => {
     Post.findAll({
       attributes: [
         'id',
-        'post_url',
-        'post_text',
         'title',
-        'created_at'
+        'genre',
+        'review',
+        'user_id'
       ],
       // include: [
       //   {
