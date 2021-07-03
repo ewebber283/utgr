@@ -1,32 +1,24 @@
-<section>
-  <h2>{{post-title}}</h2>
 
-  <form class="new-post-form">
-    <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
-    </div>
-    <div>
-      <label for="post-url">Link</label>
-      <input id="post-url" name="post-url" />
-    </div>
-    <button type="submit" class="btn">Create</button>
-  </form>
-</section>
-
-{{#if post.length}}
+<div>
+{{#if posts.length}}
 <section>
-  <h2>Your Comments</h2>
-  <ol>
+  <h2 style="color:black">Featured Games</h2>
+  <ul class="fullclick ">
     {{#each posts as |post|}}
-    <li>
+    <li cardStyle>
       {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+       <p>{{comments.length}} {{format_plural "comment" comments.length}}</p>
+       {{#each comments as |comment|}}
+       <p>{{comment_text}}</p>
+       {{/each}}
+     
+     <a href="/dashboard/edit/{{post.id}}" id="edit" class="btnDisplay"><button><i class="fa fa-edit"></i></button></a>
     </li>
     {{/each}}
-  </ol>
+  </ul>
 </section>
 {{/if}}
+</div>
 
 {{! this does nothing atm, not even a file we have in our code }}
 <script src="/javascript/add-post.js"></script>

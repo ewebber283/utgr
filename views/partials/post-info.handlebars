@@ -1,13 +1,12 @@
 <article class="post">
     <div class="title">
-        {{! had post url in href }}
-        {{!-- <a href="{{post_text}}" target="_blank">{{title}}</a> --}}
-        {{!-- <span>({{format_url post_url}})</span> --}}
-        <a href="/post/{{ id }}">{{ title }} </h2>
+        <h1>{{title}}</h1>
+        <a href="/post/{{ id }}"><img src='images/{{image}}.jpg'/></a>
+    </div>
+    <div class='description'>
+        <p>{{comments_text}}</p>
     </div>
     <div class="meta">
-        {{vote_count}} {{format_plural "point" vote_count}} by {{user.username}} on {{format_date created_at}}
-        |
         <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
     </div>
 </article>
