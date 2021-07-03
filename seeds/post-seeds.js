@@ -8,6 +8,7 @@ const postData = [
     review: 'This game is awesome@',
     user_id: 1,
     image: 'one'
+
   },
   {
     title: 'Assassins Creed Valhalla',
@@ -15,6 +16,7 @@ const postData = [
     review: 'A Fun time',
     user_id: 2,
     image: 'two'
+
   },
   {
     title: 'Forza Horizons 5',
@@ -22,6 +24,7 @@ const postData = [
     review: 'Racing is great!',
     user_id: 2,
     image: 'three'
+
   },
   {
     title: 'Fortnite',
