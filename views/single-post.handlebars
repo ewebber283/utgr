@@ -1,10 +1,15 @@
 <div>
-  <h2>Game Title: {{title}} </h2>
+  <h2>Game Title: {{post.title}} </h2>
 </div>
 <div>
-  <h2>Genre: {{genre}}</h2>
-  <h2>Game Review:</h2> {{review}}
-  <span> Posted by {{user.username}}</span>
+  <h2>Genre: {{post.genre}}</h2>
+  <h2>Game Review:</h2> 
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/WJW-bzXZM8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div>
+{{post.review}}
+</div>
+
+  <span> Posted by {{username}}</span>
 </div>
 
 {{#if loggedIn}}
@@ -16,7 +21,6 @@
 
   <div>
     <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
   </div>
 </form>
 {{/if}}
@@ -25,5 +29,4 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-<script src="/javascript/upvote.js"></script>
 {{/if}}

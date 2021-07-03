@@ -5,7 +5,7 @@ const postData = [
   {
     title: 'Sea Of Thieves',
     genre: 'Adventure',
-    review: 'This game is awesome@',
+    review: 'This game is awesome!',
     user_id: 1
   },
   {
