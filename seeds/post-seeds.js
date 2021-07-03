@@ -23,7 +23,7 @@ const postData = [
   {
     title: 'Fortnite',
     genre: 'Shooting',
-    review: 'fortnite@ut.com',
+    review: 'lorem ipsum',
     user_id: 3
   }
 
