@@ -47,43 +47,29 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/posts/:id', (req, res) => {
-    Post.findOne({
+// get single post
+router.get('/post/:id', (req, res) => {
+  Comment.findOne(
+    {
+      title: req.body.title,
+      body: req.body.post_text
+    },
+    {
       where: {
         id: req.params.id
-      },
-      attributes: [
-        'id',
-        'post_url',
-        'post_text',
-        'title',
-        'created_at',
-      ],
-      include: [
-        {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'posts_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
-          model: User,
-          attributes: ['username']
-        }
-      ]
-    })
-      .then(dbPostsData => {
-        if (!dbPostsData) {
+      }
+    }
+  )
+      .then(dbCommentsData => {
+        if (!dbCommentsData) {
           res.status(404).json({ message: 'No posts found with this id' });
           return;
         }
 
-        const Posts = dbPostsData.get({ plain: true });
+        const comments = dbCommentsData.get({ plain: true });
 
-        res.render('single-posts', {
-            posts,
+        res.render('single-post', {
+            comments,
             loggedIn: req.session.loggedIn
           });
       })
