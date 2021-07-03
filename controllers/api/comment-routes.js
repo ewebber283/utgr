@@ -11,33 +11,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/:id', (req, res) => {
-    Comment.findOne(
-      {
-        title: req.body.title,
-        body: req.body.post_text
-      },
-      {
-        where: {
-          id: req.params.id
-        }
-      }
-    )
-      .then(dbCommentData => {
-        if (!dbCommentData) {
-          res.status(404).json({ message: 'No comment found with this id' });
-          return;
-        }
-        res.json(dbCommentData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-});
-
 router.post('/', withAuth, (req, res) => {
-  // expects => {comment_text: "This is the comment", user_id: 1, post_id: 2}
   Comment.create({
     comment_text: req.body.comment_text,
     user_id: req.session.user_id,
