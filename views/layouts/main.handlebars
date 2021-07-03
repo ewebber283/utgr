@@ -9,25 +9,31 @@
 </head>
 
 <body>
-  <div class="wrapper">
-    <header>
-      <h1>UTGR</h1>
-      <nav>
-        <a href="/">Home</a>
-        {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
-        {{else}}
-        <a href="/login">login</a>
-        {{/if}}
-      </nav>
-    </header>
-    <main>
-      {{{ body }}}
-    </main>
-    <footer>
-      Thanks for visiting!
-    </footer>
+  <div class="container-fluid">
+    <div class="col-12">
+      <div class="wrapper">
+        <div class="row">
+          <header>
+            <h1 id="title">UTGR</h1>
+            <nav>
+              <a href="/">Home</a>
+              {{#if loggedIn}}
+              <a href="/dashboard">Explore</a>
+              <button id="logout" class="btn-no-style">logout</button>
+              {{else}}
+              <a href="/login">login</a>
+              {{/if}}
+            </nav>
+          </header>
+        </div>
+        <main id="body">
+          {{{ body }}}
+        </main>
+        <footer>
+          Thanks for visiting!
+        </footer>
+      </div>
+    </div>
   </div>
   
   {{#if loggedIn}}

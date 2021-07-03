@@ -1,7 +1,12 @@
-<ol class="post-list">
-  {{#each posts as |post|}}
-  <li>
-    {{> post-info post }}
-  </li>
-  {{/each}}
-</ol>
+{{#if posts.length}}
+  <section>
+
+    <ul class="post-list">
+      {{#each posts as |post|}}
+      <li>
+        {{> post-info post }}
+      </li>
+      {{/each}}
+    </ul>
+  </section>
+{{/if}}

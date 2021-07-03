@@ -1,25 +1,30 @@
-{{#if loggedIn}}
+
 
 <div>
-  <h2>{{ title }}</h2>
-  <p> {{ post_text }}</p>
+  <h2>Game Title: {{post.title}} </h2>
 </div>
-
+<div>
+  <a href="/post/{{ id }}"><img src='images/{{image}}.jpg'/></a>
+</div>
+<div>
+  <h2>Genre: {{post.genre}}</h2>
+  <h2>Game Review:</h2> 
+<div>
+{{post.review}}
+</div>
+  <span> Posted by {{username}}</span>
+</div>
+{{#if loggedIn}}
 <form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
-
   <div>
     <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
   </div>
 </form>
 {{/if}}
-
 {{> comments post.comments}}
-
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-<script src="/javascript/upvote.js"></script>
 {{/if}}

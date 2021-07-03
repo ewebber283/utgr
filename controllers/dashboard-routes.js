@@ -7,30 +7,22 @@ router.get('/', withAuth, (req, res) => {
   console.log(req.session);
   console.log('======================');
   Post.findAll({
-    // where: {
-    //   user_id: req.session.user_id
-    // },
     attributes: [
         'id',
-        'post_url',
         'post_text',
         'title',
-        'created_at'
-    //   [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+        'created_at',
+        'image'
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at','image'],
         include: {
           model: User,
           attributes: ['username']
         }
       },
-      // {
-      //   model: User,
-      //   attributes: ['username']
-      // }
     ]
   })
     .then(dbPostData => {

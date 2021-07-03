@@ -6,25 +6,11 @@ router.get('/', (req, res) => {
     Post.findAll({
       attributes: [
         'id',
-        'post_url',
         'post_text',
         'title',
-        'created_at'
+        'created_at',
+        'image'
       ],
-      // include: [
-      //   {
-      //     model: Comment,
-      //     attributes: ['id', 'comment_text', 'posts_id', 'user_id', 'created_at'],
-      //     include: {
-      //       model: User,
-      //       attributes: ['username']
-      //     }
-      //   },
-      //   {
-      //     model: User,
-      //     attributes: ['username']
-      //   }
-      // ]
     })
       .then(dbPostsData => {
         const posts = dbPostsData.map(posts => posts.get({ plain: true }));
@@ -47,29 +33,46 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-// get single post
 router.get('/post/:id', (req, res) => {
-  Comment.findOne(
-    {
-      title: req.body.title,
-      body: req.body.post_text
-    },
+  Post.findOne(
     {
       where: {
         id: req.params.id
       }
-    }
-  )
-      .then(dbCommentsData => {
-        if (!dbCommentsData) {
+    },
+    {
+      attributes: [
+        'id',
+        'title',
+        'genre',
+        'review',
+        'user_id',
+        'images'
+      ],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          include: {
+            model: User,
+            attributes: ['username']
+          }
+        },
+        {
+          model: User,
+          attributes: ['username']
+        }
+      ]
+    })
+      .then(dbPostData => {
+        if (!dbPostData) {
           res.status(404).json({ message: 'No posts found with this id' });
           return;
         }
-
-        const comments = dbCommentsData.get({ plain: true });
-
+        const post = dbPostData.get({ plain: true });
+        console.log('====',post);
         res.render('single-post', {
-            comments,
+            post,
             loggedIn: req.session.loggedIn
           });
       })

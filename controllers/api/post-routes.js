@@ -1,15 +1,24 @@
+  
 const router = require('express').Router();
-const { Post, User } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 
 router.get('/', (req, res) => {
     Post.findAll({
-        attributes: ['id', 'post_url', 'post_text', 'title', 'created_at'],
-        /*include: [
+        attributes: ['id', 'title', 'genre', 'review', 'created_at'],
+        include: [
             {
-                model: User,
-                attributes: ['username']
-            }
-        ]*/
+                model: Comment,
+                attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                include: {
+                  model: User,
+                  attributes: ['username'],
+                },
+            },
+            {
+              model: User,
+              attributes: ['username'],
+            },
+        ],
       })
       .then(dbPostData => res.json(dbPostData))
       .catch(err => {
@@ -18,18 +27,23 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-    Post.findOne({
-      where: {
-        id: req.params.id
-      },
-      attributes: ['id', 'post_url', 'post_text', 'title', 'created_at'],
-      /*include: [
+  Post.findOne({
+    attributes: ['id', 'title', 'genre', 'review', 'created_at'],
+    include: [
+        {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            include: {
+              model: User,
+              attributes: ['username'],
+            },
+        },
         {
           model: User,
-          attributes: ['username']
-        }
-      ] */
-    })
+          attributes: ['username'],
+        },
+    ],
+  })
       .then(dbPostData => {
         if (!dbPostData) {
           res.status(404).json({ message: 'No post found with this id' });
@@ -46,9 +60,9 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
-        post_text: req.body.post_text,
-        post_url: req.body.post_url,
-        author_id: req.body.author_id
+        genre: req.body.genre,
+        review: req.body.review,
+        user_id: req.body.user_id
       })
         .then(dbPostData => res.json(dbPostData))
         .catch(err => {
@@ -61,7 +75,8 @@ router.put('/:id', (req, res) => {
     Post.update(
       {
         title: req.body.title,
-        body: req.body.post_text
+        genre: req.body.genre,
+        review: req.body.review
       },
       {
         where: {

@@ -4,27 +4,31 @@ const { Post } = require('../models');
 const postData = [
   {
     title: 'Sea Of Thieves',
-    author_id: 1,
-    post_url: 'seaofthieves@ut.com',
-    post_text: 'This game is great'
+    genre: 'Adventure',
+    review: 'This game is awesome@',
+    user_id: 1,
+    image: 'one'
   },
   {
     title: 'Assassins Creed Valhalla',
-    author_id: 2,
-    post_url: 'creed@ut.com',
-    post_text: 'This game is also great'
+    genre: 'Action',
+    review: 'A Fun time',
+    user_id: 2,
+    image: 'two'
   },
   {
     title: 'Forza Horizons 5',
-    author_id: 3,
-    post_url: 'forza@ut.com',
-    post_text: 'This game is so great'
+    genre: 'racing',
+    review: 'Racing is great!',
+    user_id: 2,
+    image: 'three'
   },
   {
     title: 'Fortnite',
-    author_id: 4,
-    post_url: 'fortnite@ut.com',
-    post_text: 'This game is meh'
+    genre: 'Shooting',
+    review: 'fortnite@ut.com',
+    user_id: 3,
+    image: 'four'
   }
 
 ];

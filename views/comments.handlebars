@@ -1,1 +1,17 @@
-{{> comments comment }}
+
+<div style="background-color: black;">
+<form class="comment-form">
+  <div>
+      <h1>Comment:</h1>
+    <textarea name="comment-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit" id="addComment">add comment</button>
+  </div>
+</form>
+
+{{> comments comments}}
+</div>
+
+<script src="/javascript/comment.js"></script>
