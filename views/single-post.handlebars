@@ -1,9 +1,13 @@
-{{#if loggedIn}}
-
 <div>
-  <h2>{{ title }}</h2>
-  <p> {{ post_text }}</p>
+  <h2>Game Title: {{title}} </h2>
 </div>
+<div>
+  <h2>Genre: {{genre}}</h2>
+  <h2>Game Review:</h2> {{review}}
+  <span> Posted by {{user.username}}</span>
+</div>
+
+{{#if loggedIn}}
 
 <form class="comment-form">
   <div>
