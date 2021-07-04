@@ -31,7 +31,6 @@ AS A consumer I WANT to be able to view game descriptions, gameplay videos, and 
 
 * Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class/id naming conventions, indentation, quality comments, etc.).
 
-* ![UTGR](https://user-images.githubusercontent.com/79726069/124402324-28878380-dcf5-11eb-9224-60b1e3674be6.PNG)
 Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 ## Table of Contents
