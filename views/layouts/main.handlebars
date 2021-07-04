@@ -6,37 +6,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UTGR</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 
-<body>
-  <div class="container-fluid">
-    <div class="col-12">
-      <div class="wrapper">
-        <div class="row">
-          <header>
-            <h1 id="title">UTGR</h1>
-            <nav>
-              <a href="/">Home</a>
+<body id="main-body">
+  <div class="section">
+          <header class="header">
+            <h1 class="title is-1">UTGR</h1>
+            <nav class="column">
+              <a class ="button is-link" href="/">Home</a>
               {{#if loggedIn}}
-              <a href="/dashboard">Explore</a>
-              <button id="logout" class="btn-no-style">logout</button>
+              <a class="button is-link" href="/dashboard">Explore</a>
+              <button id="logout" class="button is-warning">logout</button>
               {{else}}
-              <a href="/login">login</a>
+              <a class="button is-primary" href="/login">login</a>
               {{/if}}
             </nav>
           </header>
-        </div>
-        <h2>Featured Games</h2>
         <main id="body">
           {{{ body }}}
         </main>
-        <footer>
-          Thanks for visiting!
-        </footer>
-      </div>
-    </div>
   </div>
-  
+  <footer class="footer subtitle is-5">
+          Thanks for visiting!
+  </footer>
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}

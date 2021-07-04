@@ -1,26 +1,27 @@
 <section>
-  <h2>Create New Post</h2>
-
-  <form class="new-post-form">
-    <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
-    </div>
-    <div>
-      <label for="post-genre">Genre</label>
-      <input id="post-genre" name="post-genre" />
-    </div>
-    <div>
-      <label for="post-review">Review</label>
-      <input id="post-review" name="post-review" />
-    </div>
-    <button type="submit" class="btn">Create</button>
-  </form>
+  <h2 class="subtitle is-4">Create New Post</h2>
+  <div class="column is-one-third is-offset-one-third">
+    <form class="new-post-form box">
+      <div class="field">
+        <label for="post-title" class="label">Title</label>
+        <input type="text" id="post-title" name="post-title" class="control"/>
+      </div>
+      <div class="field">
+        <label for="post-genre" class="label">Genre</label>
+        <input id="post-genre" name="post-genre" class="control"/>
+      </div>
+      <div class="field">
+        <label for="post-review" class="label">Review</label>
+        <input id="post-review" name="post-review" class="control"/>
+      </div>
+      <button type="submit" class="button is-link">Create</button>
+    </form>
+  </div>
 </section>
 
 {{#if posts.length}}
 <section>
-  <h2>Your Reviews</h2>
+  <h2 class="subtitle is-4">Your Reviews</h2>
   <ol>
     {{#each posts as |post|}}
     <li>

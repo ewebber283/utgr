@@ -1,11 +1,19 @@
-#title {
-text-align: center;
-}
-
-#body {
+#main-body {
     text-align: center;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #99bbff;
 }
 
 ul {
     list-style: none;
+}
+
+.section{
+    flex: 1;
+}
+
+footer{
+    padding: 3rem;
 }
