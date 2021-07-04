@@ -1,27 +1,45 @@
 <article>
   <a href="/dashboard"> &larr; Back to dashboard</a>
-  <h2>
-    Edit Review
-  </h2>
-  <form class="edit-post-form">
-    <div>
-      <input name="post-title" type="text" value="{{post.title}}" />
-      <input name="post-genre" type="text" value="{{post.genre}}" />
-      <input name="post-review" type="text" value="{{post.review}}" />
-    </div>
-    <button type="submit">Save post</button>
-    <button type="button" class="delete-post-btn">Delete post</button>
-  </form>
+  <h2 class="subtitle is-5">Edit Review</h2>
+  <div class="column is-one-third is-offset-one-third">
+    <form class="edit-post-form box">
+      <div class="field">
+        <label class="label">Title</label>
+        <div class="control">
+        <input name="post-title" type="text" value="{{post.title}}" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Genre</label>
+        <div class="control">
+        <input name="post-genre" type="text" value="{{post.genre}}" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Review</label>
+        <div class="control">
+        <input name="post-review" type="text" value="{{post.review}}" />
+        </div>
+      </div>
+      <button type="submit" class="button is-primary">Save post</button>
+      <button type="button" class="delete-post-btn button is-danger">Delete post</button>
+    </form>
+  </div>
 </article>
 
-<form class="comment-form">
-  <div>
-    <textarea name="comment-body"></textarea>
-  </div>
-  <div>
-    <button type="submit">Add comment</button>
-  </div>
-</form>
+<div class="column is-one-third is-offset-one-third">
+  <form class="comment-form">
+    <label class="label">Comment</label>
+    <div class="field">
+      <p class="control">
+      <textarea name="comment-body" class="textarea" placeholder="Add a Comment..."></textarea>
+      </p>
+    </div>
+    <div>
+      <button type="submit" class="button is-link">Add comment</button>
+    </div>
+  </form>
+</div>
 
 
 {{> comments post.comments}}
