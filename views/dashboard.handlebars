@@ -11,7 +11,6 @@
        {{#each comments as |comment|}}
        <p>{{comment_text}}</p>
        {{/each}}
-     
      <a href="/dashboard/edit/{{post.id}}" id="edit" class="btnDisplay"><button><i class="fa fa-edit"></i></button></a>
     </li>
     {{/each}}
@@ -19,6 +18,3 @@
 </section>
 {{/if}}
 </div>
-
-{{! this does nothing atm, not even a file we have in our code }}
-<script src="/javascript/add-post.js"></script>
