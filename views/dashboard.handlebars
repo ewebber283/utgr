@@ -1,20 +1,35 @@
+<section>
+  <h2>Create New Post</h2>
 
-<div>
+  <form class="new-post-form">
+    <div>
+      <label for="post-title">Title</label>
+      <input type="text" id="post-title" name="post-title" />
+    </div>
+    <div>
+      <label for="post-genre">Genre</label>
+      <input id="post-genre" name="post-genre" />
+    </div>
+    <div>
+      <label for="post-review">Review</label>
+      <input id="post-review" name="post-review" />
+    </div>
+    <button type="submit" class="btn">Create</button>
+  </form>
+</section>
+
 {{#if posts.length}}
 <section>
-  <h2 style="color:black">Featured Games</h2>
-  <ul class="fullclick ">
+  <h2>Your Reviews</h2>
+  <ol>
     {{#each posts as |post|}}
-    <li cardStyle>
+    <li>
       {{> post-info post}}
-       <p>{{comments.length}} {{format_plural "comment" comments.length}}</p>
-       {{#each comments as |comment|}}
-       <p>{{comment_text}}</p>
-       {{/each}}
-     <a href="/dashboard/edit/{{post.id}}" id="edit" class="btnDisplay"><button><i class="fa fa-edit"></i></button></a>
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
     </li>
     {{/each}}
-  </ul>
+  </ol>
 </section>
 {{/if}}
-</div>
+
+<script src="/javascript/add-posts.js"></script>
